@@ -137,41 +137,55 @@ export default function ProfilePage() {
                 
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Social Links</h3>
-                  <div className="space-y-2">
+                  <div className="">
                     {profile.url_link && (
-                      <div className="flex items-center">
+                      <div className="flex items-center pb-8">
                         <span className="text-sm font-medium text-gray-500 w-24">Website:</span>
                         <Link href={profile.url_link} target="_blank" className="text-blue-600 hover:underline">
                           {profile.url_link}
                         </Link>
                       </div>
                     )}
+                    <div className='flex gap-8'>
                     {profile.linkedin_id && (
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-500 w-24">LinkedIn:</span>
-                        <Link href={`https://linkedin.com/in/${profile.linkedin_id}`} target="_blank" className="text-blue-600 hover:underline">
-                          {profile.linkedin_id}
+                        
+                        <Link href={`${profile.linkedin_id}`} target="_blank" className="text-blue-600 hover:underline">
+                        <Image src="/linkedIn.png" alt="LinkedIn" width={56} height={56} className="" />
                         </Link>
                       </div>
                     )}
                     {profile.github_id && (
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-500 w-24">GitHub:</span>
-                        <Link href={`https://github.com/${profile.github_id}`} target="_blank" className="text-blue-600 hover:underline">
-                          {profile.github_id}
+                        
+                        <Link href={`${profile.github_id}`} target="_blank" className="text-blue-600 hover:underline">
+                        <Image src="/github.png" alt="github" width={56} height={56} className="" />
                         </Link>
                       </div>
                     )}
                     {profile.discord_id && (
                       <div className="flex items-center">
-                        <span className="text-sm font-medium text-gray-500 w-24">Discord:</span>
-                        <span className="text-gray-900">{profile.discord_id}</span>
+                         <Link href={`https://discord.com/users/${profile.discord_id}`} target="_blank" className="text-blue-600 hover:underline">
+                        <Image src="/discord.svg" alt="discord" width={56} height={56} className="" />
+                        </Link>
                       </div>
                     )}
+                    </div>
+                    
                   </div>
                 </div>
               </div>
-              {/* ... [keep edit button] ... */}
+              <div className="mt-8 flex justify-end">
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[url('/bg-3.jpg')] bg-cover bg-center hover:bg-blue-700 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  Edit Profile
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="p-8">
@@ -312,7 +326,7 @@ export default function ProfilePage() {
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[url('/bg-3.jpg')] bg-cover bg-center hover:bg-blue-700 hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
