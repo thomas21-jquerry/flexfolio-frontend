@@ -15,13 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* Header */}
-        
-
-        {/* Main content with padding for fixed header */}
-        <main className="pt-16">
           {children}
-        </main>
       </body>
     </html>
   )

@@ -6,6 +6,7 @@ import { UserProfile, getUserProfile, updateUserProfile } from '../../services/u
 import Image from 'next/image';
 import { Session } from '@supabase/auth-helpers-nextjs';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 export default function ProfilePage() {
     const [profile, setProfile] = useState<UserProfile | null>(null)
@@ -79,27 +80,23 @@ export default function ProfilePage() {
   // ... [keep existing loading and error handling] ...
 
   return (
+    <div>
+    <Navbar />
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section remains similar */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-400 py-12">
+      <div className="bg-[url('/bg-3.jpg')] bg-cover bg-center py-24">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex items-center space-x-8">
             <div className="relative w-32 h-32">
-              {profile?.profile_photo ? (
+              
                 <Image
-                  src={profile.profile_photo}
-                  alt={profile.name}
+                  src={'/profile.png'}
+                  alt={profile?.name??"user"}
                   width={128}
                   height={128}
-                  className="w-full h-full rounded-full object-cover ring-4 ring-white"
+                  className="w-full h-full rounded-full object-cover"
                 />
-              ) : (
-                <div className="w-full h-full rounded-full bg-white/20 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-              )}
+              
             </div>
             <div className="text-white">
               <h1 className="text-3xl font-bold">{profile?.name || 'Welcome'}</h1>
@@ -112,7 +109,7 @@ export default function ProfilePage() {
       <div className="max-w-4xl mx-auto px-6 py-8">
         {/* ... [keep error/success messages] ... */}
 
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div className="rounded-xl shadow-lg overflow-hidden">
           {profile && !isEditing ? (
             <div className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -309,7 +306,7 @@ export default function ProfilePage() {
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Cancel
                 </button>
@@ -327,6 +324,7 @@ export default function ProfilePage() {
           )}
         </div>
       </div>
+    </div>
     </div>
   )
 }

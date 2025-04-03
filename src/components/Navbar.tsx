@@ -43,7 +43,7 @@ export default function Navbar() {
   }
   return (
     <div>
-        <header className="bg-green-800 shadow-sm fixed w-full top-0 z-50">
+        <header className="shadow-lg bg-[#03001417] backdrop-blur-md z-50 fixed w-full top-0 md:px-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
