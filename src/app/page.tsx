@@ -70,33 +70,40 @@ export default function LandingPage() {
           {/* Portfolio Section */}
           <section className="mt-20 w-full">
             <h3 className="text-3xl font-bold text-center mb-10">Featured Portfolios</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {portfolios.map((item ) => (
-                <div
-                  key={item.user_id}
-                  className="bg-white/10 rounded-xl p-6 text-left shadow-md hover:shadow-lg transition duration-300"
-                >
-                  {item.profile_photo && (
-                    <img
-                      src={item.profile_photo}
-                      alt={item.name}
-                      className="w-16 h-16 rounded-full mb-4"
-                    />
-                  )}
-                  <h4 className="text-xl font-semibold text-white mb-2">{item.name}</h4>
-                  <p className="text-gray-300 mb-1">{item.role || "Developer"} at {item.company || "Company"}</p>
-                  <p className="text-gray-400 text-sm mb-2">{item.experience} years experience</p>
-                  <Link
-                    href={item.url_link || "#"}
-                    className="text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Portfolio →
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <div className="grid grid-cols-1 gap-6">
+  {portfolios.map((item) => (
+    <div
+      key={item.user_id}
+      className="flex items-center gap-6 bg-white/10 rounded-xl p-6 text-left shadow-md hover:shadow-lg transition duration-300"
+    >
+      {item.profile_photo && (
+        <img
+          src={item.profile_photo}
+          alt={item.name}
+          className="w-16 h-16 rounded-full"
+        />
+      )}
+      <div className="flex justify-around w-full">
+        <h4 className="text-xl font-semibold text-white mb-1">{item.name}</h4>
+        <p className="text-gray-300 mb-1">
+          {item.role || "Developer"} at {item.company || "Company"}
+        </p>
+        <p className="text-gray-400 text-sm mb-2">
+          {item.experience} years experience
+        </p>
+        <Link
+          href={item.url_link || "#"}
+          className="text-blue-400 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Portfolio →
+        </Link>
+      </div>
+    </div>
+  ))}
+</div>
+
           </section>
 
           {/* Footer */}
