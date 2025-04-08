@@ -24,6 +24,22 @@ export interface UserProfile {
   
     return response.json();
   }
+
+  export async function getUserProfileWithId(id: string):Promise<UserProfile>{
+    const response = await fetch(`${baseURL}/users/profile/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add auth token header if needed
+      }
+    });
+  
+    if (!response.ok) {
+      throw new Error('Failed to fetch profile');
+    }
+  
+    return response.json();
+  }
   
   export async function updateUserProfile(token: string, profile: UserProfile): Promise<UserProfile> {
     console.log(profile, "profile")

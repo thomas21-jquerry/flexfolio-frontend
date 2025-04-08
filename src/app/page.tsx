@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
@@ -71,9 +71,11 @@ export default function LandingPage() {
           <section className="mt-20 w-full">
             <h3 className="text-3xl font-bold text-center mb-10">Featured Portfolios</h3>
             <div className="grid grid-cols-1 gap-6">
-  {portfolios.map((item) => (
+  {portfolios.map((item, index) => (
+    <div key={index}>
+    <Link href={`/user/${item.user_id}`} passHref>
     <div
-      key={item.user_id}
+
       className="flex items-center gap-6 bg-white/10 rounded-xl p-6 text-left shadow-md hover:shadow-lg transition duration-300"
     >
       {item.profile_photo && (
@@ -91,15 +93,17 @@ export default function LandingPage() {
         <p className="text-gray-400 text-sm mb-2">
           {item.experience} years experience
         </p>
-        <Link
+        {/* <Link
           href={item.url_link || "#"}
           className="text-blue-400 hover:underline"
           target="_blank"
           rel="noopener noreferrer"
         >
           View Portfolio →
-        </Link>
+        </Link> */}
       </div>
+    </div>
+    </Link>
     </div>
   ))}
 </div>
