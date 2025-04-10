@@ -7,6 +7,8 @@ import {getUserProfileWithId, UserProfile} from '../../../services/userServices'
 import Link from 'next/link';
 
 export default function UserPage() {
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
   const params = useParams();
   const [profile, setUser] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
@@ -44,7 +46,6 @@ export default function UserPage() {
                   height={128}
                   className="w-full h-full rounded-full object-cover"
                 />
-              
             </div>
             <div className="text-white">
               <h1 className="text-3xl font-bold">{profile?.name || 'Welcome'}</h1>
@@ -126,6 +127,20 @@ export default function UserPage() {
             </div>
           )}
         </div>
+        <div className="flex items-center gap-2 mt-4">
+  <button
+    onClick={() => {
+      setLiked(!liked);
+      setLikes((prev) => (liked ? prev - 1 : prev + 1));
+    }}
+    className={`flex items-center gap-2 px-4 py-2 rounded-full transition duration-300 ${
+      liked ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-800'
+    }`}
+  >
+    ❤️ {liked ? 'Liked' : 'Like'}
+  </button>
+  <span className="text-gray-600">{likes} {likes === 1 ? 'like' : 'likes'}</span>
+</div>
       </div>
     </div>
     </div>
